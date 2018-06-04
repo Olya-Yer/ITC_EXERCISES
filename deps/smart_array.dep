@@ -1,2 +1,0 @@
-deps/smart_array.dep  deps/smart_array.dep: src/smart_array.cpp \
- src/smart_array.hpp
