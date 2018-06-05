@@ -1,6 +1,8 @@
 #include <smart_array.hpp>
 #include <iostream>
 #include <new>
+
+void quick_sort(Smart_array& s, int left, int right);
 /**
  *@brief The main function for battleship program
  * 
@@ -10,18 +12,44 @@
  *@date 25.05.2018
  */
 int main(){
-	unsigned int a = 5;
-	Smart_array* s = new Smart_array(a);
-	s->set_element(2,9);
-	std::cout << s->get_element(2) << std::endl;
-	s->print_array();
-	Smart_array* b = s;
-	b->set_element(1,6);
-	b->set_element(2,2);
-	b->set_element(3,10);
-	b->resize(9);
-	s->print_array();
-	std::cout << std::endl;
-	b->print_array();
+	Smart_array s(10,0);
+	s.set_element(2,9);
+	s.set_element(0,6);
+	s.print_array();
+	quick_sort(s,0,s.get_size()-1);	
+	s.print_array();
+	Smart_array b = s;
+//	b.resize(40);
+//	b.set_element(39,80);
+//	b.print_array();
 	return 0;
+}
+
+
+void quick_sort(Smart_array& s, int left, int right)
+{
+	int i = left;
+	int j = right;
+	int m = (int) (left + right)/2;
+	int pivot = s.get_element(m);
+
+	while (i < j){
+		while (s.get_element(i) < pivot) {
+			++i;
+		}
+		while (s.get_element(j) > pivot) {
+			--j;
+		}
+		if (i <= j){
+			s.swap(i, j);
+			++i;
+			--j;
+		}
+	}
+	if (left < j) {
+		quick_sort (s, left , j);
+	}
+	if (i < right) {
+		quick_sort ( s, i, right);
+	}
 }

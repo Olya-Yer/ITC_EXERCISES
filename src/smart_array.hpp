@@ -1,29 +1,34 @@
 class Smart_array
 {
 	private:
-		const int m_empty_return = 0;
 		const char* m_out_message = "out of the range";
-		const float m_default_value = 0.5;
+		int m_default_value = 0;
 		int m_size;
-		float* m_array;
+		int* m_array;
 		bool init();
 		bool is_out(unsigned int);
-		void move(float*, float*, int, int);
+		void move(int*, int*, unsigned int, unsigned int);
 	public:
 		/**
 		 *@brief Smart_array constructor.
 		 *@detail Creates a float array with the given size, initializes
-		 *	it with empty values.
+		 *	it with default values.
 		 *@param unsigned int The size of the m_array.
+		 *@param int the default values for initialization
 		 *@return void.
 		 */
-		Smart_array(unsigned int);
+		Smart_array(unsigned int, int);
 		/**
 		 *@brief Smart_array copy constructor.
 		 *@param  a refferenc to const Smart_array.
 		 *@return void.
 		 */
 		Smart_array(const Smart_array &s);
+		/**
+		 *@brief Smart_array destructor.
+		 *@return void.
+		 */
+		~Smart_array();
 		/**
 		 *@brief Smart_array setter function.
 		 *@detail Sets the given value to the given index, if the index
@@ -32,7 +37,7 @@ class Smart_array
 		 *@param int the value.
 		 *@return bool true if the value is set, false otherwise.
 		 */
-		bool set_element(int, int);
+		bool set_element(unsigned int, int);
 		/**
 		 *@brief Resizes the array .
 		 *@detail sets the array size to the given value, if the new
@@ -44,21 +49,11 @@ class Smart_array
 		 */	
 		void resize(unsigned int);
 		/**
-		 *@brief checks if the accessed cell is empty .
-		 *@detail checks if the given cell is in the range of array
-		 *    size and is empty.
+		 *@brief gets the value of the element with the given index .
 		 *@param int the index.
-		 *@return true, if the cell exists and is empty, false otherwise.
-		 */	
-		bool is_empty(int);
-		/**
-		 *@brief checks if the accessed cell is empty .
-		 *@detail checks if the given cell is in the range of array
-		 *    size and is empty.
-		 *@param int the index.
-		 *@return true, if the cell exists and is empty, false otherwise.
+		 *@return value, if the cell exists and m_default_value otherwise.
 		 */
-		int get_element(int);
+		int get_element(unsigned int);
 		/**
 		 *@brief returns the size of the current array
 		 *@return int the size of the current array
@@ -67,5 +62,12 @@ class Smart_array
 		/**
 		 * @brief prints the current array
 		 */
-		void print_array(); 
+		void print_array();
+		/**
+		 *@brief swaps the values of given cells .
+		 *@param unsigned int the index.
+		 *@param unsigned int the index
+		 *@return true if the swap was sucessfull , false otherwise.
+		 */
+		bool swap (unsigned int,unsigned int);
 };

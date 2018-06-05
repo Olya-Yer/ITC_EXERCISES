@@ -5,12 +5,12 @@ INCLUDES := -I./src
 
 bin/program : $(OBJECTS)
 	@mkdir -p bin
-	@g++ $(OBJECTS) -o $@
+	@g++ -fbounds-check $(OBJECTS) -o $@
 
 
 obj/%.o : src/%.cpp 
 	@mkdir -p ./obj
-	g++ -c $< $(INCLUDES) -o $@
+	g++ -fbounds-check -c $< $(INCLUDES) -o $@
 
 deps/%.dep : src/%.cpp
 	@mkdir -p ./deps
