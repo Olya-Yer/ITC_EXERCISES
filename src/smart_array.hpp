@@ -28,6 +28,7 @@ class Smart_array
 		 *@brief Smart_array destructor.
 		 *@return void.
 		 */
+                Smart_array& operator=(const Smart_array& s);
 		~Smart_array();
 		/**
 		 *@brief Smart_array setter function.

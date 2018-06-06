@@ -70,9 +70,9 @@ void Smart_array::move(int* f, int* t, unsigned int n_f, unsigned int n_t){
 	for(int i = 0; i < (n_t - n_f ); ++i){
 		*(t + i) = m_default_value;
 	}
-	/*if(m_array) {
+	if(m_array) {
 		delete[] m_array;
-	}*/
+	}
 	m_array = t;
 	m_size = n_t;
 }
@@ -99,11 +99,15 @@ bool Smart_array::swap(unsigned int i, unsigned int j)
 }
 
 Smart_array::Smart_array(unsigned int n, int d)
-	: m_size(n), m_default_value(d)
 {
+        m_size = n;
+        m_default_value = d;
 	std::cout << "constructor called" << std::endl;
 	try {
-		m_array = new int(n);	
+                std::cout << "initializing array"<< std::endl;
+                m_array = nullptr;
+		m_array = new int(m_size);
+                std::cout << "done" << std::endl;
 	}
 	catch (std::bad_alloc& e) {
 		std::cout << e.what() << std::endl;
@@ -128,6 +132,24 @@ Smart_array::Smart_array(const Smart_array &s)
 		std::cout << e.what() << std::endl;
 	}
 
+}
+
+Smart_array& Smart_array::operator=(const Smart_array& s)
+{
+        try{
+                if (this != &s) {
+                        delete[] m_array;
+                        m_size = s.m_size;
+                        m_default_value = s.m_default_value;
+                        m_array = nullptr;
+                        m_array = new int[s.m_size];
+                }
+        move(s.m_array, m_array, s.m_size,m_size);
+       }
+        catch (std::bad_alloc& e) {
+                std::cout << e.what() << std::endl;
+        }
+        return *this;    
 }
 
 Smart_array::~Smart_array()

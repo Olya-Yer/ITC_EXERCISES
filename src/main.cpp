@@ -16,9 +16,15 @@ int main(){
 	s.set_element(2,9);
 	s.set_element(0,6);
 	s.print_array();
+        std::cout << "Sorting" << std::endl;
 	quick_sort(s,0,s.get_size()-1);	
 	s.print_array();
-	Smart_array b = s;
+        std::cout << "new Smart_array declared" << std::endl;
+        Smart_array b(10,0);
+        std::cout << "assignment op called" << std::endl;
+        b = s;
+//      b.print_array();
+//	Smart_array b = s;
 //	b.resize(40);
 //	b.set_element(39,80);
 //	b.print_array();
