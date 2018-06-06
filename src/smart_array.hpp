@@ -44,7 +44,7 @@ class Smart_array
 		 *@brief Resizes the array .
 		 *@detail sets the array size to the given value, if the new
 		 *    array size is bigger than the old one , added cells are
-		 *    initialized to "empty" value, else the cells that get out
+		 *    initialized to default value, else the cells that get out
 		 *    of range are cut off.
 		 *@param int the new size of the array.
 		 *@return void.
