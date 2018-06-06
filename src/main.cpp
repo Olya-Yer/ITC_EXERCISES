@@ -12,6 +12,7 @@ void quick_sort(Smart_array& s, int left, int right);
  *@date 25.05.2018
  */
 int main(){
+	std::cout << "creating first obj" << std::endl;
 	Smart_array s(10,0);
 	s.set_element(2,9);
 	s.set_element(0,6);
@@ -21,13 +22,13 @@ int main(){
 	s.print_array();
         std::cout << "new Smart_array declared" << std::endl;
         Smart_array b(10,0);
-        std::cout << "assignment op called" << std::endl;
         b = s;
-//      b.print_array();
-//	Smart_array b = s;
-//	b.resize(40);
-//	b.set_element(39,80);
-//	b.print_array();
+        b.print_array();
+	std::cout << "creating array c" << std::endl;
+	Smart_array c = s;
+	c.resize(40);
+	c.set_element(39,80);
+	c.print_array();
 	return 0;
 }
 

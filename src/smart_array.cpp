@@ -35,7 +35,7 @@ void Smart_array::resize(unsigned int n)
 {
 	try {
 		int *v = NULL; 
-		v = new int(n);
+		v = new int [n];
 		move(m_array, v, m_size, n);
 	}
 	catch (std::bad_alloc& e) {
@@ -70,9 +70,9 @@ void Smart_array::move(int* f, int* t, unsigned int n_f, unsigned int n_t){
 	for(int i = 0; i < (n_t - n_f ); ++i){
 		*(t + i) = m_default_value;
 	}
-	if(m_array) {
+/*	if(m_array) {
 		delete[] m_array;
-	}
+	}*/
 	m_array = t;
 	m_size = n_t;
 }
@@ -106,7 +106,7 @@ Smart_array::Smart_array(unsigned int n, int d)
 	try {
                 std::cout << "initializing array"<< std::endl;
                 m_array = nullptr;
-		m_array = new int(m_size);
+		m_array = new int [m_size];
                 std::cout << "done" << std::endl;
 	}
 	catch (std::bad_alloc& e) {
@@ -123,7 +123,7 @@ Smart_array::Smart_array(const Smart_array &s)
 	try {	
 		std::cout << "making an array"<< s.m_size <<std::endl;
 		int* a ;
-		a = new int(m_size);
+		a = new int [m_size];
 		std::cout << "made"<<std::endl;
 		std::cout << m_array; 
 		move(s.m_array, a, s.m_size, m_size);
@@ -136,6 +136,7 @@ Smart_array::Smart_array(const Smart_array &s)
 
 Smart_array& Smart_array::operator=(const Smart_array& s)
 {
+	std::cout << "assignment operator called" << std::endl;
         try{
                 if (this != &s) {
                         delete[] m_array;
