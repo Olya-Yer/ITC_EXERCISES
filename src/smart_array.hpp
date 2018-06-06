@@ -1,3 +1,4 @@
+#include <iostream>
 class Smart_array
 {
 	private:
@@ -7,12 +8,13 @@ class Smart_array
 		int* m_array;
 		bool init();
 		bool is_out(unsigned int);
+		bool is_out(unsigned int) const;
 		void move(int*, int*, unsigned int, unsigned int);
 	public:
 		/**
 		 *@brief Smart_array constructor.
-		 *@detail Creates a float array with the given size, initializes
-		 *	it with default values.
+		 *@detail Creates a float array with the given size,
+		 *   initializes it with default values.
 		 *@param unsigned int The size of the m_array.
 		 *@param int the default values for initialization
 		 *@return void.
@@ -28,7 +30,6 @@ class Smart_array
 		 *@brief Smart_array destructor.
 		 *@return void.
 		 */
-                Smart_array& operator=(const Smart_array& s);
 		~Smart_array();
 		/**
 		 *@brief Smart_array setter function.
@@ -59,6 +60,7 @@ class Smart_array
 		 *@brief returns the size of the current array
 		 *@return int the size of the current array
 		 */
+		const int get_size() const;
 		int get_size();
 		/**
 		 * @brief prints the current array
@@ -71,4 +73,34 @@ class Smart_array
 		 *@return true if the swap was sucessfull , false otherwise.
 		 */
 		bool swap (unsigned int,unsigned int);
+		/**
+		 *@brief operator[] overloader.
+		 *@detial returns the element with a given index or sets th
+		 *	e value to the given index;
+		 *@param unsigned int the index;
+		 *@return int& reference to the element;
+		 */
+		int& operator[](unsigned int);
+		/**
+		 *@brief operator[] overloader for const objects.
+		 *@detial returns the element with a given index.
+		 *@param unsigned int the index;
+		 *@return const int& reference to the element;
+		 */
+		const int& operator[](unsigned int) const;
+		/**
+		 *@brief operator<< overloader.
+		 *@detail prints the given object.
+		 *@param std::ostream&
+		 *@param const Smart_array&
+		 *@return void
+		 */
+		friend std::ostream& operator<<(std::ostream& ,const
+				Smart_array&);
+		/**
+		 * @brief operator= overloader;
+		 * @param Smart_array&
+		 * return Smart_array&
+		 */
+		Smart_array& operator=(const Smart_array& s);
 };

@@ -23,12 +23,18 @@ int main(){
         std::cout << "new Smart_array declared" << std::endl;
         Smart_array b(10,0);
         b = s;
+	b.set_element(3,5);
         b.print_array();
+	std::cout << "s" << std::endl;
+	s.print_array();
 	std::cout << "creating array c" << std::endl;
 	Smart_array c = s;
 	c.resize(40);
 	c.set_element(39,80);
 	c.print_array();
+	std::cout << "element at 39 : " << c[39] << std::endl;
+	c[38] = 10;
+	std::cout<< c <<std::endl;
 	return 0;
 }
 
