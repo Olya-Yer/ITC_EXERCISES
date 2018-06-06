@@ -111,13 +111,15 @@ Smart_array::Smart_array(unsigned int n, int d)
 	init();
 };
 
-Smart_array::Smart_array(const Smart_array &s) : m_size(s.m_size),
-	m_default_value(s.m_default_value)
+Smart_array::Smart_array(const Smart_array &s) 
 {
 	std::cout << "copy constructor called" << std::endl;
+	m_size = s.m_size;
+	m_default_value = s.m_default_value;
 	try {	
 		std::cout << "making an array"<< s.m_size <<std::endl;
-		int* a = new int[s.m_size];
+		int* a ;
+		a = new int(m_size);
 		std::cout << "made"<<std::endl;
 		std::cout << m_array; 
 		move(s.m_array, a, s.m_size, m_size);

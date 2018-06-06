@@ -5,12 +5,12 @@ INCLUDES := -I./src
 
 bin/program : $(OBJECTS)
 	@mkdir -p bin
-	g++ $(OBJECTS) -o $@
+	g++ -std=c++11 $(OBJECTS) -o $@
 
 
 obj/%.o : src/%.cpp 
 	@mkdir -p ./obj
-	g++ -c $< $(INCLUDES) -o $@
+	g++ -std=c++11 -c $< $(INCLUDES) -o $@
 
 deps/%.dep : src/%.cpp
 	@mkdir -p ./deps
