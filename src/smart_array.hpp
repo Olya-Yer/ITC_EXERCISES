@@ -1,4 +1,5 @@
 #include <iostream>
+
 class Smart_array
 {
 	private:

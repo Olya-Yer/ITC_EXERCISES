@@ -9,6 +9,7 @@ bool Smart_array::set_element(unsigned int i, int v)
 	if(is_out(i)) {
 		return false;
 	}
+        // YM: overkill
 	int* c = m_array + i;  
 	assert(NULL != c);
 	*(c) = v;
@@ -39,12 +40,12 @@ int Smart_array::get_size()
 void Smart_array::resize(unsigned int n)
 {
 	try {
-		int *v = NULL; 
-		v = new int [n];
+		int *v = new int [n];
 		move(m_array, v, m_size, n);
 	}
 	catch (std::bad_alloc& e) {
 		std::cout << e.what() << std::endl;
+                //exit 1;
 	}
 }
 
